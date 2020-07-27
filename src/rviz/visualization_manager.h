@@ -163,6 +163,8 @@ public:
    */
   void addDisplay(Display* display, bool enabled);
 
+  void addBuiltinDisplays();
+
   /**
    * \brief Remove and delete all displays
    */

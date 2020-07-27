@@ -139,5 +139,5 @@ int PointTool::processMouseEvent(ViewportMouseEvent& event)
 
 } // namespace rviz
 
-#include <pluginlib/class_list_macros.hpp>
-PLUGINLIB_EXPORT_CLASS(rviz::PointTool, rviz::Tool)
+//#include <pluginlib/class_list_macros.hpp>
+//PLUGINLIB_EXPORT_CLASS(rviz::PointTool, rviz::Tool)

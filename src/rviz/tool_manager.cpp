@@ -38,6 +38,16 @@
 
 #include "rviz/tool_manager.h"
 
+#include "rviz/default_plugin/tools/point_tool.h"
+//#include "rviz/default_plugin/tools/pose_tool.h"
+#include "rviz/default_plugin/tools/initial_pose_tool.h"
+#include "rviz/default_plugin/tools/focus_tool.h"
+#include "rviz/default_plugin/tools/measure_tool.h"
+#include "rviz/default_plugin/tools/move_tool.h"
+#include "rviz/default_plugin/tools/selection_tool.h"
+#include "rviz/default_plugin/tools/goal_tool.h"
+#include "rviz/default_plugin/tools/interaction_tool.h"
+
 namespace rviz
 {
 QString addSpaceToCamelCase(QString input)
@@ -55,6 +65,59 @@ ToolManager::ToolManager(DisplayContext* context)
   , default_tool_(nullptr)
 {
   connect(property_tree_model_, SIGNAL(configChanged()), this, SIGNAL(configChanged()));
+  addBuiltinTools();
+}
+
+static Tool* newPointTool()
+{
+  return new PointTool();
+}
+
+static Tool* newFocusTool()
+{
+  return new FocusTool();
+}
+
+static Tool* newMeasureTool()
+{
+  return new MeasureTool();
+}
+
+static Tool* newMoveTool()
+{
+  return new MoveTool();
+}
+
+static Tool* newSelectionTool()
+{
+  return new SelectionTool();
+}
+
+static Tool* newGoalTool()
+{
+  return new GoalTool();
+}
+
+static Tool* newInitialPoseTool()
+{
+  return new InitialPoseTool();
+}
+
+static Tool* newInteractionTool()
+{
+  return new InteractionTool();
+}
+
+void ToolManager::addBuiltinTools()
+{
+  factory_->addBuiltInClass("rviz", "PublishPoint", "A container for Displays", &newPointTool);
+  factory_->addBuiltInClass("rviz", "FocusCamera", "A container for Displays", &newFocusTool);
+  factory_->addBuiltInClass("rviz", "Measure", "A container for Displays", &newMeasureTool);
+  factory_->addBuiltInClass("rviz", "MoveCamera", "A container for Displays", &newMoveTool);
+  factory_->addBuiltInClass("rviz", "Select", "A container for Displays", &newSelectionTool);
+  factory_->addBuiltInClass("rviz", "SetGoal", "A container for Displays", &newGoalTool);
+  factory_->addBuiltInClass("rviz", "SetInitialPose", "A container for Displays", &newInitialPoseTool);
+  factory_->addBuiltInClass("rviz", "Interact", "A container for Displays", &newInteractionTool);
 }
 
 ToolManager::~ToolManager()

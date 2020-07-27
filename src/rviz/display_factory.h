@@ -30,7 +30,8 @@
 #define DISPLAY_FACTORY_H
 
 #include "rviz/display.h"
-#include "rviz/pluginlib_factory.h"
+//#include "rviz/pluginlib_factory.h"
+#include "rviz/builtin_pluginlib_factory.h"
 
 #include <QIcon>
 #include <QSet>

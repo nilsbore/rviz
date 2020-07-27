@@ -33,7 +33,8 @@
 #include <QObject>
 #include <QStringList>
 
-#include "rviz/pluginlib_factory.h"
+//#include "rviz/pluginlib_factory.h"
+#include "rviz/builtin_pluginlib_factory.h"
 #include "rviz/view_controller.h"
 #include "rviz/rviz_export.h"
 
@@ -56,6 +57,8 @@ class RVIZ_EXPORT ViewManager : public QObject
 public:
   ViewManager(DisplayContext* context);
   ~ViewManager() override;
+
+  void addBuiltinViews();
 
   void initialize();
 

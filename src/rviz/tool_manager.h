@@ -33,7 +33,8 @@
 #include <QObject>
 #include <QStringList>
 
-#include "rviz/pluginlib_factory.h"
+//#include "rviz/pluginlib_factory.h"
+#include "rviz/builtin_pluginlib_factory.h"
 #include "rviz/tool.h"
 #include "rviz/rviz_export.h"
 
@@ -51,6 +52,8 @@ class RVIZ_EXPORT ToolManager : public QObject
 public:
   ToolManager(DisplayContext* context);
   ~ToolManager() override;
+
+  void addBuiltinTools();
 
   /** @brief Initialization for after the DisplayContext is created.
    * Loads standard RViz tools. */

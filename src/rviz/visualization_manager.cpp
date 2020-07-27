@@ -84,6 +84,9 @@
 #include "rviz/visualization_manager.h"
 #include "rviz/window_manager_interface.h"
 
+#include "rviz/default_plugin/axes_display.h"
+#include "rviz/default_plugin/path_display.h"
+
 namespace rviz
 {
 // helper class needed to display an icon besides "Global Options"
@@ -226,12 +229,29 @@ VisualizationManager::VisualizationManager(RenderPanel* render_panel,
       boost::bind(&VisualizationManager::threadedQueueThreadFunc, this));
 
   display_factory_ = new DisplayFactory();
+  addBuiltinDisplays();
 
   ogre_render_queue_clearer_ = new OgreRenderQueueClearer();
   Ogre::Root::getSingletonPtr()->addFrameListener(ogre_render_queue_clearer_);
 
   update_timer_ = new QTimer;
   connect(update_timer_, SIGNAL(timeout()), this, SLOT(onUpdate()));
+}
+
+static Display* newPathDisplay()
+{
+  return new PathDisplay();
+}
+
+static Display* newAxesDisplay()
+{
+  return new AxesDisplay();
+}
+
+void VisualizationManager::addBuiltinDisplays()
+{
+  display_factory_->addBuiltInClass("rviz", "Axes", "A container for Displays", &newAxesDisplay);
+  display_factory_->addBuiltInClass("rviz", "Path", "A container for Displays", &newPathDisplay);
 }
 
 VisualizationManager::~VisualizationManager()

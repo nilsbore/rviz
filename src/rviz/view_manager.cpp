@@ -40,6 +40,13 @@
 
 #include "rviz/view_manager.h"
 
+#include "rviz/default_plugin/view_controllers/orbit_view_controller.h"
+#include "rviz/default_plugin/view_controllers/xy_orbit_view_controller.h"
+#include "rviz/default_plugin/view_controllers/third_person_follower_view_controller.h"
+#include "rviz/default_plugin/view_controllers/fixed_orientation_ortho_view_controller.h"
+#include "rviz/default_plugin/view_controllers/fps_view_controller.h"
+#include "rviz/default_plugin/view_controllers/frame_view_controller.h"
+
 namespace rviz
 {
 ViewManager::ViewManager(DisplayContext* context)
@@ -53,6 +60,47 @@ ViewManager::ViewManager(DisplayContext* context)
   property_model_->setDragDropClass("view-controller");
   connect(property_model_, SIGNAL(configChanged()), this, SIGNAL(configChanged()));
   connect(this, SIGNAL(currentChanged()), this, SIGNAL(configChanged()));
+  addBuiltinViews();
+}
+
+static ViewController* newOrbitViewController()
+{
+  return new OrbitViewController();
+}
+
+static ViewController* newXYOrbitViewController()
+{
+  return new XYOrbitViewController();
+}
+
+static ViewController* newThirdPersonFollowerViewController()
+{
+  return new ThirdPersonFollowerViewController();
+}
+
+static ViewController* newFPSViewController()
+{
+  return new FPSViewController();
+}
+
+static ViewController* newFixedOrientationOrthoViewController()
+{
+  return new FixedOrientationOrthoViewController();
+}
+
+static ViewController* newFrameViewController()
+{
+  return new FrameViewController();
+}
+
+void ViewManager::addBuiltinViews()
+{
+  factory_->addBuiltInClass("rviz", "Orbit", "A container for Displays", &newOrbitViewController);
+  factory_->addBuiltInClass("rviz", "XYOrbit", "A container for Displays", &newXYOrbitViewController);
+  factory_->addBuiltInClass("rviz", "ThirdPersonFollower", "A container for Displays", &newThirdPersonFollowerViewController);
+  factory_->addBuiltInClass("rviz", "FPS", "A container for Displays", &newFPSViewController);
+  factory_->addBuiltInClass("rviz", "TopDownOrtho", "A container for Displays", &newFixedOrientationOrthoViewController);
+  factory_->addBuiltInClass("rviz", "FrameAligned", "A container for Displays", &newFrameViewController);
 }
 
 ViewManager::~ViewManager()

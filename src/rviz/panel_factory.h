@@ -30,7 +30,8 @@
 #define PANEL_FACTORY_H
 
 #include "rviz/panel.h"
-#include "rviz/pluginlib_factory.h"
+//#include "rviz/pluginlib_factory.h"
+#include "rviz/builtin_pluginlib_factory.h"
 
 namespace rviz
 {

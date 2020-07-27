@@ -107,5 +107,5 @@ int FocusTool::processMouseEvent(ViewportMouseEvent& event)
 
 } // namespace rviz
 
-#include <pluginlib/class_list_macros.hpp>
-PLUGINLIB_EXPORT_CLASS(rviz::FocusTool, rviz::Tool)
+//#include <pluginlib/class_list_macros.hpp>
+//PLUGINLIB_EXPORT_CLASS(rviz::FocusTool, rviz::Tool)

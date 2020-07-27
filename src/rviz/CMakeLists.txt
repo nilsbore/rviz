@@ -6,7 +6,7 @@ if(UNIX AND NOT APPLE)
   find_package(X11 REQUIRED)
 endif()
 
-add_subdirectory(default_plugin)
+#add_subdirectory(default_plugin)
 
 # Build the version number and other build-time constants into the
 # source for access at run-time.
@@ -39,7 +39,7 @@ add_library(${PROJECT_NAME}
   geometry.cpp
   help_panel.cpp
   image/ros_image_texture.cpp
-  image/image_display_base.cpp
+  #image/image_display_base.cpp
   loading_dialog.cpp
   message_filter_display.h
   mesh_loader.cpp
@@ -97,10 +97,10 @@ add_library(${PROJECT_NAME}
   properties/tf_frame_property.cpp
   properties/vector_property.cpp
   render_panel.cpp
-  robot/robot_link.cpp
-  robot/robot_joint.cpp
-  robot/robot.cpp
-  robot/tf_link_updater.cpp
+  #robot/robot_link.cpp
+  #robot/robot_joint.cpp
+  #robot/robot.cpp
+  #robot/tf_link_updater.cpp
   scaled_image_widget.cpp
   screenshot_dialog.cpp
   selection_panel.cpp
@@ -122,6 +122,24 @@ add_library(${PROJECT_NAME}
   tool_properties_panel.cpp
   yaml_config_reader.cpp
   yaml_config_writer.cpp
+
+  default_plugin/axes_display.cpp
+  default_plugin/path_display.cpp
+  default_plugin/view_controllers/fixed_orientation_ortho_view_controller.cpp
+  default_plugin/view_controllers/orbit_view_controller.cpp
+  default_plugin/view_controllers/xy_orbit_view_controller.cpp
+  default_plugin/view_controllers/frame_view_controller.cpp
+  default_plugin/view_controllers/fps_view_controller.cpp
+  default_plugin/view_controllers/third_person_follower_view_controller.cpp
+  default_plugin/tools/point_tool.cpp
+  default_plugin/tools/pose_tool.cpp
+  default_plugin/tools/initial_pose_tool.cpp
+  default_plugin/tools/focus_tool.cpp
+  default_plugin/tools/measure_tool.cpp
+  default_plugin/tools/move_tool.cpp
+  default_plugin/tools/selection_tool.cpp
+  default_plugin/tools/goal_tool.cpp
+  default_plugin/tools/interaction_tool.cpp
 
   ${ENV_CONFIG_FILE}
 )

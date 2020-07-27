@@ -126,26 +126,26 @@ find_package(catkin REQUIRED
   COMPONENTS
   cmake_modules
   geometry_msgs
-  image_transport
+  #image_transport
   interactive_markers
-  laser_geometry
+  #laser_geometry
   map_msgs
   message_filters
   message_generation
   nav_msgs
-  pluginlib
-  python_qt_binding
+  #pluginlib
+  #python_qt_binding
   resource_retriever
-  rosbag
+  #rosbag
   rosconsole
   roscpp
   roslib
-  rospy
+  #rospy
   sensor_msgs
   std_msgs
   std_srvs
   tf
-  urdf
+  #urdf
   visualization_msgs
 )
 
@@ -209,14 +209,14 @@ catkin_package(
     ${OPENGL_LIBRARIES}
   CATKIN_DEPENDS
     geometry_msgs
-    image_transport
+    #image_transport
     interactive_markers
-    laser_geometry
+    #laser_geometry
     map_msgs
     message_filters
     message_runtime
     nav_msgs
-    pluginlib
+    #pluginlib
     resource_retriever
     roscpp
     roslib
@@ -224,7 +224,7 @@ catkin_package(
     std_msgs
     std_srvs
     tf
-    urdf
+    #urdf
     visualization_msgs
 )
 
